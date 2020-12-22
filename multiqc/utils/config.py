@@ -42,13 +42,13 @@ MULTIQC_DIR = os.path.dirname(os.path.realpath(inspect.getfile(multiqc)))
 # Default MultiQC config
 searchp_fn = os.path.join( MULTIQC_DIR, 'utils', 'config_defaults.yaml')
 with open(searchp_fn) as f:
-    configs = yaml.load(f)
+    configs = yaml.safe.load(f)
     for c, v in configs.items():
         globals()[c] = v
 # Module filename search patterns
 searchp_fn = os.path.join( MULTIQC_DIR, 'utils', 'search_patterns.yaml')
 with open(searchp_fn) as f:
-    sp = yaml.load(f)
+    sp = yaml.safe.load(f)
 
 # Other defaults that can't be set in YAML
 data_tmp_dir = '/tmp' # will be overwritten by core script
